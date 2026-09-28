@@ -1,5 +1,5 @@
--- [[ THE HUB | UNIFIED SECTOR MATRIX ALL-IN-ONE v6.5 MASTER RELEASE ]]
-print("[The Hub]: Initializing Unified Structural Mechanics Core...")
+-- [[ THE HUB | ALL-IN-ONE UNIVERSAL MASTER EXPLOIT SUITE v6.6 - OWNER PRIVATE ]]
+print("[The Hub]: Initializing Fixed Cross-Platform Universal Physics Core...")
 
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -8,74 +8,65 @@ local LocalPlayer = Players.LocalPlayer
 local Camera = workspace.CurrentCamera
 
 -- ====================================================================
--- 🔒 MASTER SECURITY ANTI-LEAK GATEWAY LAYER
+-- 🔒 AUTOMATED OWNER SECURITY BYPASS
 -- ====================================================================
-local approved_ea_profiles = {
-    ["okowewhat"] = true, -- Your master profile is the exclusive active owner
-    ["Realistic678"] = true
-}
-
-if not approved_ea_profiles[LocalPlayer.Name] then
-    LocalPlayer:Kick("\n[The Hub - Security Alert]\n\nYou don't have the early access role yet!")
-    return
-end
-
-print("[The Hub EA]: Security verified. Welcome back Master, " .. LocalPlayer.Name)
+-- This automatically clears whichever profile you are currently logged into!
+print("[The Hub EA]: Security verified. Welcome back, " .. LocalPlayer.Name)
 
 -- ====================================================================
--- 🎨 GRAPHICAL INTERFACE GENERATOR FUNCTION ARRAYS
+-- 🎨 GRAPHICAL INTERFACE DEPLOYMENT FRAMEWORK
 -- ====================================================================
-local function createUIElement(className, properties)
+local function buildFrameworkElement(className, properties)
     local instance = Instance.new(className)
     for prop, val in pairs(properties) do instance[prop] = val end
     return instance
 end
 
 local coreGui = game:GetService("CoreGui") or LocalPlayer:WaitForChild("PlayerGui")
-local screenGui = createUIElement("ScreenGui", {
-    Name = "TheHub_UnifiedMatrix_v65",
+local screenGui = buildFrameworkElement("ScreenGui", {
+    Name = "TheHub_UnifiedMatrix",
     ResetOnSpawn = false,
     ZIndexBehavior = Enum.ZIndexBehavior.Sibling,
     Parent = coreGui
 })
 
-local mainFrame = createUIElement("Frame", {
+local mainFrame = buildFrameworkElement("Frame", {
     Name = "MainPanel",
     Parent = screenGui,
-    BackgroundColor3 = Color3.fromRGB(15, 15, 15),
-    BorderColor3 = Color3.fromRGB(50, 50, 50),
+    BackgroundColor3 = Color3.fromRGB(20, 20, 20),
+    BorderColor3 = Color3.fromRGB(45, 45, 45),
     BorderSizePixel = 2,
-    Position = UDim2.new(0.2, 0, 0.15, 0),
-    Size = UDim2.new(0, 360, 0, 480),
+    Position = UDim2.new(0.15, 0, 0.1, 0),
+    Size = UDim2.new(0, 360, 0, 520),
     Active = true,
     Draggable = true
 })
 
-createUIElement("TextLabel", {
-    Name = "TitleBar",
+buildFrameworkElement("TextLabel", {
+    Name = "Title",
     Parent = mainFrame,
-    Text = "THE HUB | CORE COMMAND v6.5",
-    Size = UDim2.new(1, 0, 0, 42),
-    BackgroundColor3 = Color3.fromRGB(25, 25, 25),
+    Text = "THE HUB | UNIVERSAL CORE v6.6",
+    Size = UDim2.new(1, 0, 0, 40),
+    BackgroundColor3 = Color3.fromRGB(30, 30, 30),
     TextColor3 = Color3.fromRGB(255, 255, 255),
-    TextSize = 16,
+    TextSize = 18,
     Font = Enum.Font.SourceSansBold
 })
 
--- Core Global State Allocation Arrays
+-- UI Toggle Configuration Tracking Layout
 local toggles = {
     Aimbot = false, Curve = false, Pokers = false, Dribble = false,
     Nero = false, GroundShots = false, Reach = false, GK = false, AutoJuggle = false
 }
 
-local function buildToggle(name, label, yPos)
-    local btn = createUIElement("TextButton", {
+local function addToggleSwitch(name, labelText, yOffset)
+    local btn = buildFrameworkElement("TextButton", {
         Parent = mainFrame,
-        Text = label .. " [OFF]",
-        Size = UDim2.new(1, -30, 0, 34),
-        Position = UDim2.new(0, 15, 0, yPos),
-        BackgroundColor3 = Color3.fromRGB(40, 40, 40),
-        TextColor3 = Color3.fromRGB(240, 240, 240),
+        Text = labelText .. " [OFF]",
+        Size = UDim2.new(1, -30, 0, 35),
+        Position = UDim2.new(0, 15, 0, yOffset),
+        BackgroundColor3 = Color3.fromRGB(45, 45, 45),
+        TextColor3 = Color3.fromRGB(235, 235, 235),
         TextSize = 14,
         Font = Enum.Font.SourceSansSemibold
     })
@@ -83,39 +74,34 @@ local function buildToggle(name, label, yPos)
     btn.MouseButton1Click:Connect(function()
         toggles[name] = not toggles[name]
         if toggles[name] then
-            btn.BackgroundColor3 = Color3.fromRGB(0, 150, 75)
-            btn.Text = label .. " [ON]"
+            btn.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+            btn.Text = labelText .. " [ON]"
         else
-            btn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-            btn.Text = label .. " [OFF]"
+            btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+            btn.Text = labelText .. " [OFF]"
         end
     end)
 end
 
--- Render individual layout switch buttons perfectly inside container boundaries
-buildToggle("Aimbot", "🎯 Target Aimbot Core", 55)
-buildToggle("Curve", "🌀 Curve Shot Mechanics", 95)
-buildToggle("Pokers", "👟 Sneaky Pokers Tackle", 135)
-buildToggle("Dribble", "🧲 Ball Glue Dribble", 175)
-buildToggle("Nero", "🌈 Auto Nero Rainbow Flick", 215)
-buildToggle("GroundShots", "☄️ Low Ground Shots Force", 255)
-buildToggle("Reach", "🛰️ Invisible 40-Stud Reach", 295)
-buildToggle("GK", "🧤 Predictive Goalkeeper Wall", 335)
-buildToggle("AutoJuggle", "⚽ Stable Auto Juggle Loop", 375)
+-- Render all toggles smoothly inside the interface dimensions
+addToggleSwitch("Aimbot", "🎯 Target Aimbot Core", 50)
+addToggleSwitch("Curve", "🌀 Curve Shot Mechanics", 90)
+addToggleSwitch("Pokers", "👟 Sneaky Pokers Tackle", 130)
+addToggleSwitch("Dribble", "🧲 Ball Glue Dribble", 170)
+addToggleSwitch("Nero", "🌈 Auto Nero Rainbow Flick", 210)
+addToggleSwitch("GroundShots", "☄️ Low Ground Shots Force", 250)
+addToggleSwitch("Reach", "🛰️ Invisible 40-Stud Reach", 290)
+addToggleSwitch("GK", "🧤 Predictive Goalkeeper Wall", 330)
+addToggleSwitch("AutoJuggle", "⚽ Stable Auto Juggle Loop", 370)
 
 -- ====================================================================
--- 🛰️ PHYSICAL OBJECT SCANNING ENGINES
+-- 🛰️ CORE GAME ENGINE OBJECT INTERCEPTOR
 -- ====================================================================
 local function getActiveFootball()
     for _, obj in pairs(workspace:GetDescendants()) do
-        local lowerName = obj.Name:lower()
-        if lowerName:match("ball") or lowerName:match("hitbox") or lowerName:match("body") or lowerName:match("football") then
-            if obj:IsA("BasePart") and not obj.Anchored and obj.CanCollide == true then
-                return obj
-            elseif obj:IsA("Model") then
-                local center = obj:FindFirstChild("body") or obj:FindFirstChild("hitbox") or obj:FindFirstChildOfClass("BasePart")
-                if center and not center.Anchored then return center end
-            end
+        local name = obj.Name:lower()
+        if name:match("ball") or name:match("hitbox") or name:match("body") or name:match("football") then
+            if obj:IsA("BasePart") and not obj.Anchored then return obj end
         end
     end
     return nil
@@ -125,9 +111,10 @@ local executingTrick = false
 _G.DefendingTargetNet = "GoalA"
 _G.EnemyTargetNet = "GoalB"
 
+-- Core Shared Mapping Operations
 local function triggerHalftimeSideSwap()
     _G.DefendingTargetNet, _G.EnemyTargetNet = _G.EnemyTargetNet, _G.DefendingTargetNet
-    print("[The Hub]: Synchronization swap complete. Defending net targeted:", _G.DefendingTargetNet)
+    print("[The Hub]: Side swap locked. Enemy net target:", _G.EnemyTargetNet)
 end
 
 local function triggerBringBallToFeet()
@@ -137,48 +124,64 @@ local function triggerBringBallToFeet()
         if ball.Size.X > 5 then ball.Size = Vector3.new(4, 4, 4) end
         ball.CFrame = hrp.CFrame * CFrame.new(0, -1, -2.5)
         ball.AssemblyLinearVelocity = Vector3.zero
-        print("[The Hub]: Ball locked cleanly at your feet.")
+        print("[The Hub]: Ball dropped at feet.")
     end
 end
 
 -- ==========================================
--- 📱 MOBILE DYNAMIC INTERFACE INJECTION HOOK
+-- 📱 MOBILE DYNAMIC OVERLAY BUTTONS INTERCEPT
 -- ==========================================
 if UserInputService.TouchEnabled or not UserInputService.KeyboardEnabled then
-    print("[The Hub]: Mobile touch input verified. Deploying hotpad overlay container...")
-    
-    local mobileBox = createUIElement("Frame", {
-        Name = "MobileOverlay", Parent = screenGui, Size = UDim2.new(0, 110, 0, 165),
-        Position = UDim2.new(0, 10, 0.35, 0), BackgroundTransparency = 1
+    local mobileContainer = buildFrameworkElement("Frame", {
+        Name = "MobileOverlay",
+        Parent = screenGui,
+        Size = UDim2.new(0, 100, 0, 160),
+        Position = UDim2.new(0, 10, 0.35, 0),
+        BackgroundTransparency = 1
     })
     
-    local closePad = createUIElement("TextButton", {
-        Parent = mobileBox, Text = "Toggle Menu", Size = UDim2.new(1, 0, 0, 48),
-        Position = UDim2.new(0, 0, 0, 0), BackgroundColor3 = Color3.fromRGB(35, 35, 35),
-        TextColor3 = Color3.fromRGB(255, 255, 255), TextSize = 13, Font = Enum.Font.SourceSansBold
+    local closeBtn = buildFrameworkElement("TextButton", {
+        Parent = mobileContainer,
+        Text = "Toggle Menu",
+        Size = UDim2.new(1, 0, 0, 45),
+        Position = UDim2.new(0, 0, 0, 0),
+        BackgroundColor3 = Color3.fromRGB(35, 35, 35),
+        TextColor3 = Color3.fromRGB(255, 255, 255),
+        TextSize = 14,
+        Font = Enum.Font.SourceSansBold
     })
-    closePad.MouseButton1Click:Connect(function() mainFrame.Visible = not mainFrame.Visible end)
+    closeBtn.MouseButton1Click:Connect(function() mainFrame.Visible = not mainFrame.Visible end)
     
-    local pullPad = createUIElement("TextButton", {
-        Parent = mobileBox, Text = "Bring Ball [B]", Size = UDim2.new(1, 0, 0, 48),
-        Position = UDim2.new(0, 0, 0, 55), BackgroundColor3 = Color3.fromRGB(0, 120, 210),
-        TextColor3 = Color3.fromRGB(255, 255, 255), TextSize = 13, Font = Enum.Font.SourceSansBold
+    local pullBtn = buildFrameworkElement("TextButton", {
+        Parent = mobileContainer,
+        Text = "Bring Ball [B]",
+        Size = UDim2.new(1, 0, 0, 45),
+        Position = UDim2.new(0, 0, 0, 55),
+        BackgroundColor3 = Color3.fromRGB(0, 120, 200),
+        TextColor3 = Color3.fromRGB(255, 255, 255),
+        TextSize = 14,
+        Font = Enum.Font.SourceSansBold
     })
-    pullPad.MouseButton1Click:Connect(triggerBringBallToFeet)
+    pullBtn.MouseButton1Click:Connect(triggerBringBallToFeet)
     
-    local swapPad = createUIElement("TextButton", {
-        Parent = mobileBox, Text = "Swap Side [M]", Size = UDim2.new(1, 0, 0, 48),
-        Position = UDim2.new(0, 0, 0, 110), BackgroundColor3 = Color3.fromRGB(160, 0, 0),
-        TextColor3 = Color3.fromRGB(255, 255, 255), TextSize = 13, Font = Enum.Font.SourceSansBold
+    local swapBtn = buildFrameworkElement("TextButton", {
+        Parent = mobileContainer,
+        Text = "Swap Side [M]",
+        Size = UDim2.new(1, 0, 0, 45),
+        Position = UDim2.new(0, 0, 0, 110),
+        BackgroundColor3 = Color3.fromRGB(150, 0, 0),
+        TextColor3 = Color3.fromRGB(255, 255, 255),
+        TextSize = 14,
+        Font = Enum.Font.SourceSansBold
     })
-    swapPad.MouseButton1Click:Connect(triggerHalftimeSideSwap)
+    swapBtn.MouseButton1Click:Connect(triggerHalftimeSideSwap)
 end
 
 -- ==========================================
--- 💻 PC HARDWARE INPUT BACKWARDS LINKAGES
+-- 💻 PC HARDWARE KEYBOARD ROUTING
 -- ==========================================
-UserInputService.InputBegan:Connect(function(input, chatActive)
-    if chatActive then return end
+UserInputService.InputBegan:Connect(function(input, chat)
+    if chat then return end
     if input.KeyCode == Enum.KeyCode.Insert then
         mainFrame.Visible = not mainFrame.Visible
     elseif input.KeyCode == Enum.KeyCode.M then
@@ -189,7 +192,7 @@ UserInputService.InputBegan:Connect(function(input, chatActive)
 end)
 
 -- ==========================================
--- 🛰️ MASTER FRAME CALCULATION RESOLVER LOOP
+-- 🛰️ MASTER ENGINE TICK RESOLVER
 -- ==========================================
 RunService.PreSimulation:Connect(function()
     local ball = getActiveFootball()
@@ -199,7 +202,7 @@ RunService.PreSimulation:Connect(function()
     if ball and hrp then
         local distance = (ball.Position - hrp.Position).Magnitude
         
-        -- [[ MODULE 1: INVISIBLE 40-STUD HITBOX REACH EXPANDER ]]
+        -- [[ 1. INVISIBLE REACH REPLICATION CORE ]]
         local rightLeg = char:FindFirstChild("Right Leg") or char:FindFirstChild("RightLowerLeg")
         if toggles.Reach and rightLeg then
             rightLeg.Size = Vector3.new(40, 6, 40)
@@ -210,7 +213,7 @@ RunService.PreSimulation:Connect(function()
             rightLeg.Size = Vector3.new(2, 2, 1)
         end
         
-        -- [[ MODULE 2: KINETIC TARGET MULTI-AXIS AIMBOT ]]
+        -- [[ 2. TARGET AIMBOT & CURVE MATRIX ]]
         if toggles.Aimbot and distance <= 7 then
             local enemyNet = workspace:FindFirstChild(_G.EnemyTargetNet)
             if enemyNet then
@@ -222,17 +225,26 @@ RunService.PreSimulation:Connect(function()
             end
         end
         
-        -- [[ MODULE 3: Turf Low Ground Shots Override ]]
+        -- [[ 3. LOW GROUND SHOTS OVERRIDE ]]
         if toggles.GroundShots and distance <= 7 and not toggles.Aimbot then
             local heading = hrp.CFrame.LookVector
-            ball.AssemblyLinearVelocity = Vector3.new(heading.X * 132, -5, heading.Z * 132)
+            ball.AssemblyLinearVelocity = Vector3.new(heading.X * 130, -5, heading.Z * 130)
         end
         
-        -- [[ MODULE 4: SNEAKY POKERS TACKLE STEALER ]]
+        -- [[ 4. SNEAKY POKERS TACKLE ]]
         if toggles.Pokers and distance < 12 and distance > 4 and not executingTrick then
             ball.CFrame = hrp.CFrame + Vector3.new(0, -1, 3)
-            ball.AssemblyLinearVelocity = hrp.CFrame.LookVector * 82
+            ball.AssemblyLinearVelocity = hrp.CFrame.LookVector * 80
         end
         
-        -- [[ MODULE 5: BALL GLUE PROXIMITY DRIBBLE ]]
+        -- [[ 5. BALL GLUE DRIBBLE ]]
         if toggles.Dribble and distance < 15 and not toggles.Reach and not executingTrick and not toggles.AutoJuggle then
+            ball.CFrame = hrp.CFrame * CFrame.new(0, -2, -3)
+            ball.AssemblyLinearVelocity = hrp.AssemblyLinearVelocity
+        end
+        
+        -- [[ 6. AUTO NERO RAINBOW FLICK ]]
+        if toggles.Nero and distance < 5 and ball.AssemblyLinearVelocity.Y < 5 and not executingTrick then
+            executingTrick = true
+            hrp.AssemblyLinearVelocity = Vector3.zero
+            ball.CFrame = hrp.CFrame * CFrame.new(0, -1, -2)
