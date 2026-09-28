@@ -1,12 +1,13 @@
--- [[ MODULE: AIMBOT & HIGH-VOLLEY BANGER CORE ]]
+-- [[ THE HUB | SHOTS, REACH, AND HIGH-LOB NERO MATRIX ]]
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local LocalPlayer = Players.LocalPlayer
-local Camera = workspace.CurrentCamera
 
-_G.AimbotActive = false
-_G.CurveActive = false
-_G.EnemyTargetNet = "GoalB"
+_G.ReachActive = false
+_G.NeroActive = false
+_G.SneakyDribbleActive = false
+_G.GroundShotsActive = false
+local executingTrick = false
 
 local function getBall()
     for _, obj in pairs(workspace:GetDescendants()) do
@@ -21,35 +22,47 @@ RunService.PreSimulation:Connect(function()
     local ball = getBall()
     local char = LocalPlayer.Character
     local hrp = char and char:FindFirstChild("HumanoidRootPart")
-    
-    if ball and hrp and _G.AimbotActive then
+    if ball and hrp then
         local distance = (ball.Position - hrp.Position).Magnitude
         
-        -- Activates when you touch or get extremely close to the ball
-        if distance <= 7 then
-            local enemyNet = workspace:FindFirstChild(_G.EnemyTargetNet)
-            if enemyNet then
-                local vectorBase = (enemyNet.Position - ball.Position).Unit
-                local targetPower = 145 -- Standard shot power
-                
-                -- [[ 🔥 HIGH-VOLLEY BANGER DETECTION 🔥 ]]
-                -- If the ball is elevated in the air, pump up the power and aim for the top shelf
-                if ball.Position.Y > 5.5 then
-                    targetPower = 185 -- Blasts a high-velocity rocket
-                    -- Shift the target vector slightly upward to hit the top corners/crossbar
-                    vectorBase = ( (enemyNet.Position + Vector3.new(0, 4, 0)) - ball.Position ).Unit
-                end
-                
-                -- Apply curving horizontal vectors if curve mode is turned on
-                if _G.CurveActive then 
-                    vectorBase = vectorBase + Camera.CFrame.RightVector * 0.28 
-                end
-                
-                -- Force override on velocity to steer it exactly into the target goal slot
-                ball.AssemblyLinearVelocity = vectorBase * targetPower
-                print("[The Hub]: Shot executed! Velocity scale applied:", targetPower)
-            end
+        -- Proximity Invisible Reach
+        local rightLeg = char:FindFirstChild("Right Leg") or char:FindFirstChild("RightLowerLeg")
+        if _G.ReachActive and rightLeg then
+            rightLeg.Size = Vector3.new(45, 5, 45) rightLeg.CanCollide = false rightLeg.CanTouch = true rightLeg.Transparency = 1
+        elseif rightLeg and rightLeg.Size.X > 5 then
+            rightLeg.Size = Vector3.new(2, 2, 1)
+        end
+        
+        -- [[ 🔥 FIXED HIGH-LOB AUTO NERO RAINBOW FLICK 🔥 ]]
+        if _G.NeroActive and distance < 5 and ball.AssemblyLinearVelocity.Y < 5 and not executingTrick then
+            executingTrick = true
+            hrp.AssemblyLinearVelocity = Vector3.zero
+            ball.AssemblyLinearVelocity = Vector3.zero
+            ball.CFrame = hrp.CFrame * CFrame.new(0, -1.2, -1.8)
+            ball.AssemblyLinearVelocity = Vector3.new(0, 78, 0) -- Pure upward launch thrust
+            
+            task.delay(0.08, function()
+                pcall(function()
+                    if ball and hrp then
+                        local heading = hrp.CFrame.LookVector
+                        ball.AssemblyLinearVelocity = Vector3.new(heading.X * 42, 45, heading.Z * 42)
+                    end
+                end)
+            end)
+            task.delay(0.45, function() executingTrick = false end)
+        end
+        
+        -- Sneaky Proximity Dribble Magnet
+        if _G.SneakyDribbleActive and distance < 14 and not _G.ReachActive then
+            ball.CFrame = hrp.CFrame * CFrame.new(0, -2, -2.8)
+            ball.AssemblyLinearVelocity = hrp.AssemblyLinearVelocity
+        end
+        
+        -- Turf Low Ground Shots Override
+        if _G.GroundShotsActive and distance <= 7 and not _G.NeroActive then
+            local heading = hrp.CFrame.LookVector
+            ball.AssemblyLinearVelocity = Vector3.new(heading.X * 135, -8, heading.Z * 135)
         end
     end
 end)
-print("[The Hub]: Aimbot & Volley Banger sub-module mapped.")
+print("[The Hub]: Expanded skills and high-lob matrix successfully mapped.")
