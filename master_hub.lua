@@ -1,4 +1,4 @@
--- [[ THE HUB | ALL-IN-ONE UNIVERSAL MASTER EXPLOIT SUITE v6.6 - OWNER PRIVATE ]]
+-- [[ THE HUB | ALL-IN-ONE UNIVERSAL MASTER EXPLOIT SUITE v6.7 - OWNER PRIVATE ]]
 print("[The Hub]: Initializing Fixed Cross-Platform Universal Physics Core...")
 
 local Players = game:GetService("Players")
@@ -7,15 +7,9 @@ local UserInputService = game:GetService("UserInputService")
 local LocalPlayer = Players.LocalPlayer
 local Camera = workspace.CurrentCamera
 
--- ====================================================================
--- 🔒 AUTOMATED OWNER SECURITY BYPASS
--- ====================================================================
--- This automatically clears whichever profile you are currently logged into!
+-- Automatically clear whichever profile you are currently logged into
 print("[The Hub EA]: Security verified. Welcome back, " .. LocalPlayer.Name)
 
--- ====================================================================
--- 🎨 GRAPHICAL INTERFACE DEPLOYMENT FRAMEWORK
--- ====================================================================
 local function buildFrameworkElement(className, properties)
     local instance = Instance.new(className)
     for prop, val in pairs(properties) do instance[prop] = val end
@@ -45,7 +39,7 @@ local mainFrame = buildFrameworkElement("Frame", {
 buildFrameworkElement("TextLabel", {
     Name = "Title",
     Parent = mainFrame,
-    Text = "THE HUB | UNIVERSAL CORE v6.6",
+    Text = "THE HUB | UNIVERSAL CORE v6.7",
     Size = UDim2.new(1, 0, 0, 40),
     BackgroundColor3 = Color3.fromRGB(30, 30, 30),
     TextColor3 = Color3.fromRGB(255, 255, 255),
@@ -53,7 +47,6 @@ buildFrameworkElement("TextLabel", {
     Font = Enum.Font.SourceSansBold
 })
 
--- UI Toggle Configuration Tracking Layout
 local toggles = {
     Aimbot = false, Curve = false, Pokers = false, Dribble = false,
     Nero = false, GroundShots = false, Reach = false, GK = false, AutoJuggle = false
@@ -83,7 +76,6 @@ local function addToggleSwitch(name, labelText, yOffset)
     end)
 end
 
--- Render all toggles smoothly inside the interface dimensions
 addToggleSwitch("Aimbot", "🎯 Target Aimbot Core", 50)
 addToggleSwitch("Curve", "🌀 Curve Shot Mechanics", 90)
 addToggleSwitch("Pokers", "👟 Sneaky Pokers Tackle", 130)
@@ -94,9 +86,6 @@ addToggleSwitch("Reach", "🛰️ Invisible 40-Stud Reach", 290)
 addToggleSwitch("GK", "🧤 Predictive Goalkeeper Wall", 330)
 addToggleSwitch("AutoJuggle", "⚽ Stable Auto Juggle Loop", 370)
 
--- ====================================================================
--- 🛰️ CORE GAME ENGINE OBJECT INTERCEPTOR
--- ====================================================================
 local function getActiveFootball()
     for _, obj in pairs(workspace:GetDescendants()) do
         local name = obj.Name:lower()
@@ -111,7 +100,6 @@ local executingTrick = false
 _G.DefendingTargetNet = "GoalA"
 _G.EnemyTargetNet = "GoalB"
 
--- Core Shared Mapping Operations
 local function triggerHalftimeSideSwap()
     _G.DefendingTargetNet, _G.EnemyTargetNet = _G.EnemyTargetNet, _G.DefendingTargetNet
     print("[The Hub]: Side swap locked. Enemy net target:", _G.EnemyTargetNet)
@@ -128,9 +116,6 @@ local function triggerBringBallToFeet()
     end
 end
 
--- ==========================================
--- 📱 MOBILE DYNAMIC OVERLAY BUTTONS INTERCEPT
--- ==========================================
 if UserInputService.TouchEnabled or not UserInputService.KeyboardEnabled then
     local mobileContainer = buildFrameworkElement("Frame", {
         Name = "MobileOverlay",
@@ -177,9 +162,6 @@ if UserInputService.TouchEnabled or not UserInputService.KeyboardEnabled then
     swapBtn.MouseButton1Click:Connect(triggerHalftimeSideSwap)
 end
 
--- ==========================================
--- 💻 PC HARDWARE KEYBOARD ROUTING
--- ==========================================
 UserInputService.InputBegan:Connect(function(input, chat)
     if chat then return end
     if input.KeyCode == Enum.KeyCode.Insert then
@@ -191,9 +173,6 @@ UserInputService.InputBegan:Connect(function(input, chat)
     end
 end)
 
--- ==========================================
--- 🛰️ MASTER ENGINE TICK RESOLVER
--- ==========================================
 RunService.PreSimulation:Connect(function()
     local ball = getActiveFootball()
     local char = LocalPlayer.Character
@@ -202,7 +181,6 @@ RunService.PreSimulation:Connect(function()
     if ball and hrp then
         local distance = (ball.Position - hrp.Position).Magnitude
         
-        -- [[ 1. INVISIBLE REACH REPLICATION CORE ]]
         local rightLeg = char:FindFirstChild("Right Leg") or char:FindFirstChild("RightLowerLeg")
         if toggles.Reach and rightLeg then
             rightLeg.Size = Vector3.new(40, 6, 40)
@@ -213,7 +191,6 @@ RunService.PreSimulation:Connect(function()
             rightLeg.Size = Vector3.new(2, 2, 1)
         end
         
-        -- [[ 2. TARGET AIMBOT & CURVE MATRIX ]]
         if toggles.Aimbot and distance <= 7 then
             local enemyNet = workspace:FindFirstChild(_G.EnemyTargetNet)
             if enemyNet then
@@ -225,26 +202,48 @@ RunService.PreSimulation:Connect(function()
             end
         end
         
-        -- [[ 3. LOW GROUND SHOTS OVERRIDE ]]
         if toggles.GroundShots and distance <= 7 and not toggles.Aimbot then
             local heading = hrp.CFrame.LookVector
             ball.AssemblyLinearVelocity = Vector3.new(heading.X * 130, -5, heading.Z * 130)
         end
         
-        -- [[ 4. SNEAKY POKERS TACKLE ]]
         if toggles.Pokers and distance < 12 and distance > 4 and not executingTrick then
             ball.CFrame = hrp.CFrame + Vector3.new(0, -1, 3)
             ball.AssemblyLinearVelocity = hrp.CFrame.LookVector * 80
         end
         
-        -- [[ 5. BALL GLUE DRIBBLE ]]
         if toggles.Dribble and distance < 15 and not toggles.Reach and not executingTrick and not toggles.AutoJuggle then
             ball.CFrame = hrp.CFrame * CFrame.new(0, -2, -3)
             ball.AssemblyLinearVelocity = hrp.AssemblyLinearVelocity
         end
         
-        -- [[ 6. AUTO NERO RAINBOW FLICK ]]
         if toggles.Nero and distance < 5 and ball.AssemblyLinearVelocity.Y < 5 and not executingTrick then
             executingTrick = true
             hrp.AssemblyLinearVelocity = Vector3.zero
             ball.CFrame = hrp.CFrame * CFrame.new(0, -1, -2)
+            ball.AssemblyLinearVelocity = (hrp.CFrame.LookVector * 55) + Vector3.new(0, 60, 0)
+            task.delay(0.4, function() executingTrick = false end)
+        end
+        
+        if toggles.AutoJuggle and distance < 10 and not executingTrick and not (toggles.Nero and distance < 5) then
+            executingTrick = true
+            task.spawn(function()
+                ball.CFrame = hrp.CFrame * CFrame.new(0, 4.5, -1)
+                ball.AssemblyLinearVelocity = Vector3.new(hrp.AssemblyLinearVelocity.X, 24, hrp.AssemblyLinearVelocity.Z)
+                task.wait(0.15)
+                executingTrick = false
+            end)
+        end
+        
+        if toggles.GK and not executingTrick then
+            local myNet = workspace:FindFirstChild(_G.DefendingTargetNet)
+            if myNet then
+                local netDistance = (ball.Position - myNet.Position).Magnitude
+                if netDistance < 125 then
+                    hrp.AssemblyLinearVelocity = Vector3.zero
+                    local currentVel = ball.AssemblyLinearVelocity
+                    local interceptX, interceptY = ball.Position.X, ball.Position.Y
+                    
+                    if currentVel.Magnitude > 5 then
+                        local virtualPos, virtualVel = ball.Position, currentVel
+                        for i = 1, 45 do
